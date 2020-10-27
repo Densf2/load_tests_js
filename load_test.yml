@@ -1,0 +1,10 @@
+config:
+  target: 'https://artillery.io'
+  phases:
+    - duration: 60
+      arrivalRate: 
+      rampTo: 50
+scenarios:
+  - flow:
+    - get:
+        url: "/docs"

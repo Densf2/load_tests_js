@@ -1,0 +1,21 @@
+config:
+  target: 'https://www.google.com'
+  phases:
+    - duration: 120  
+      arrivalRate: 10
+      rampTo: 20
+      name: "Warm up the application" #added the 20 users till 120 second
+    - duration: 240
+      arrivalRate: 20
+      rampTo: 100
+      name: "Ramp to high load" #added the 100 users (20 users every 1 second) till 240 seconds
+    - duration: 600
+      arrivalRate: 100
+      name: "Sustained high load" # added 600 users (100 users every 1 second) till 600 seconds
+  defaults:
+    headers:
+      x-my-service-auth: 
+scenarios:
+  - flow:
+    - get:
+        url: '/doodles/json/2019/11?hl=en'
